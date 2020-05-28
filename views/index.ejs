@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder</title>
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- angular -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+    <!-- resume -->
+    <script type="text/javascript" src="javascripts/resume.js"></script>
+    
+    <link rel="stylesheet" href="stylesheets/resume.css" type="text/css">
+
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+      
+</head>
+<body ng-app="resumeApp">
+ 
+    <div class="container-fluid">
+        <div ng-controller="resumeController" class="col-md-8 col-md-offset-2">
+            <form class="form-group">
+
+              <div class="head">
+                <h1>Build Your Resume</h1>
+              </div>
+              <br>
+
+              <div class="details">
+                  <legend class="text-center">Personal info</legend>
+                  <div class="line"></div>
+                  <br>
+                  <label>Name<span class="required">*</span></label>
+                  <div class="name">
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="name.fn" required/>
+                    <input type="text" class="form-control" placeholder="Last Name" ng-model="name.ln" required/>
+                  </div>
+
+                  <br>
+
+                  <label>Email Address<span class="required">*</span></label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <label class="col-md-offset-4">Phone Number<span class="required">*</span></label>
+                  <div class="contact">  
+                    <input type="email" class="form-control" placeholder="Email Address" ng-model="contact.email" required/>
+                    <input type="text" class="form-control" placeholder="Phone Number" ng-model="contact.phone" maxlength="10" required/>
+                  </div>
+                  <br>
+                  
+                  <label>House Number<span class="required">*</span></label>&nbsp&nbsp&nbsp&nbsp
+                  <label class="col-md-offset-4">Street<span class="required">*</span></label>
+                  <div class="postal">
+                    <input type="text" class="form-control" placeholder="House Number" ng-model="postal.hno" maxlength="40" required/>
+                    <input type="text" class="form-control" placeholder="Street" ng-model="postal.street" maxlength="40" required/>
+                  </div>
+                  <br>
+
+                  <label>City<span class="required">*</span></label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <label class="col-md-offset-5">State<span class="required">*</span></label>
+                  <div class="address">
+                    <input type="text" class="form-control" placeholder="City" ng-model="address.city" maxlength="40" required/>
+                    <input type="text" class="form-control" placeholder="State" ng-model="address.state" maxlength="40" required/>
+                  </div>
+
+                  <br>
+
+
+                  <legend class="text-center">Educational Info</legend>
+                  <div class="line"></div>
+                  <br>
+                  <div class="education"></div>
+                      <label>College</label>
+                      <textarea class="form-control" rows="1" cols="1" placeholder="College" ng-model="educationClg.college"></textarea>
+                      <br>
+                      <label>Branch</label>
+                      <textarea class="form-control" rows="1" cols="1" placeholder="Branch" ng-model="educationClg.branch"></textarea>
+                      <br>
+                      <label>College CGPA</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <label class="col-md-offset-4">Duration</label>
+                      <div class="educationClg">
+                        <input type="text" class="form-control" placeholder="CGPA" ng-model="educationClg.cgpa" required/>
+                        <input type="text" class="form-control" placeholder="Duration" ng-model="educationClg.year" required/>
+                      </div>
+                      <br>
+                      <label>10th School Name</label>&nbsp
+                      <label class="col-md-offset-2">Duration</label>&nbsp&nbsp
+                      <label class="col-md-offset-3">10th CGPA</label>
+                      <div class="educationSchool1">
+                        <input type="text" class="form-control" placeholder="10th School Name" ng-model="educationSchool1.name"/>
+                        <input type="text" class="form-control" placeholder="Duration" ng-model="educationSchool1.year"/>
+                        <input type="text" class="form-control" placeholder="CGPA" ng-model="educationSchool1.cgpa"/>  
+                      </div>
+                      <br>
+                      <label>12th School Name</label>&nbsp
+                      <label class="col-md-offset-2">Duration</label>&nbsp&nbsp
+                      <label class="col-md-offset-3">12th CGPA</label>
+                      <div class="educationSchool2">
+                        <input type="text" class="form-control" placeholder="12th School Name" ng-model="educationSchool2.name"/>
+                        <input type="text" class="form-control" placeholder="Duration" ng-model="educationSchool2.year"/> 
+                        <input type="text" class="form-control" placeholder="CGPA" ng-model="educationSchool2.cgpa"/>  
+                      </div>
+                  <br>
+
+                  <legend class="text-center">Career Objective</legend>
+                  <div class="line"></div>
+                  <br>
+                  <textarea class="form-control" ng-model="careerObjective"></textarea>
+                  <br>
+
+                  <legend class="text-center">Skills</legend>
+                  <div class="line"></div>
+                  <br>
+                  <div class="skill">
+                  <input type="text" class="form-control" placeholder="Add Skill" ng-model="skills.s">
+                  <button  ng-click="skill(skills)" class="btn pull-right">Add One More Skill</button>
+                  </div>
+                  <br>
+
+                  <legend class="text-center">Achivements</legend>
+                  <div class="line"></div>
+                  <br>
+                  <div class="achivement">
+                  <input type="text" class="form-control" placeholder="Add Achivement" ng-model="achivements.a">
+                  <button  ng-click="achivement(achivements)" class="btn pull-right">Add One More Achivement</button>
+                  </div>
+                  <br>
+
+                  <legend class="text-center">Internships/Projects</legend>
+                  <div class="line"></div>
+                  <br>
+                  <div class="project">
+                  <textarea class="form-control" ng-model="projects.pr"></textarea>
+                  <br>
+                  <button  ng-click="project(projects)" class="btn pull-right">Add One More</button>
+                  </div>
+                  <br>
+
+                  <legend class="text-center">Onilne Profile
+                  <div class="line"></div>
+                  <br>
+                  <div class="profile">
+                  <textarea class="form-control" ng-model="profile.pro"></textarea>
+                  <button  ng-click="profiles(profile)" class="btn pull-right">Add One More</button>
+                  </div>
+                  <br>
+                  </legend>
+
+                  <legend class="text-center">Strengths</legend>
+                  <div class="line"></div>
+                  <br>
+                  <div class="strengths">
+                  <textarea class="form-control" ng-model="strengths.s"></textarea>
+                  <button  ng-click="strength(strengths)" class="btn pull-right">Add One More</button>
+                  </div>
+                  <br>
+
+
+                  <div class="col-md-offset-5" style="width: 70px;">
+                <button ng-click="resume(name,contact,postal,address,educationClg,educationSchool1,educationSchool2,skills,careerObjective,profile,achivements,projects,strengths)" class="btn">Download Resume</button>
+              </div>
+
+              </div>                  
+              
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>

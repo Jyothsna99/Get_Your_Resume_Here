@@ -1,0 +1,126 @@
+  .head {
+            padding: 50px;
+            padding-left: 290px;
+            text-align: center;
+            background:#2c3e50;
+            color: #dfe6e9;
+            font-family: Verdana;
+            font-size: 28px;
+      }
+  .line{
+    background:#2c3e50;
+    padding:1px; 
+  }
+
+  body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Verdana;
+      font-size: 16px;
+      color: #666;
+      line-height: 25px;
+      }
+
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 40px;
+      color: #dfe6e9;
+      }
+      
+      form {
+      width: 100%;
+      padding: 25px;
+      border-radius: 8px;
+      background: #dfe6e9;
+      box-shadow: 0 0 50px 0 #b2bec3; 
+      }
+     
+      
+      input, select, textarea {
+      margin-bottom: 10px;
+      border: 2px solid #2d3436;
+      border-radius: 3px;
+      }
+
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+
+      input:hover::placeholder {
+      color: #1c87c9;
+      }
+
+      .details input:hover, .details select:hover,.details textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #1c87c9;
+      color: #1c87c9;
+      }
+
+      .details {
+      position: relative;
+      margin: 10px 0;
+      }
+      
+      span.required {
+      margin-left: 0;
+      color: red;
+      }
+      
+      button {
+      width: auto;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #2c3e50;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      }
+
+      button:hover {
+      background: #576574;
+      }
+
+      @media (min-width: 568px) {
+      .name, .contact,.address,.extraDetails,.educationClg ,.educationSchool1,.educationSchool2,.skill,.achivement,.project,.profile,.postal,.strengths{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .name input,.postal input {
+      width: calc(50% - 20px);
+      }
+      .contact .details, {
+      width: calc(50% - 8px);
+      }
+      .contact input,.extraDetails input,.educationClg input{
+      width: calc(50% - 20px);
+      }
+
+      .address input {
+        width: calc(50% - 20px);
+      }
+      .educationSchool1 input,.educationSchool2 input{
+        width: calc(30% - 10px)
+      }
+      .educationSchool1 select,.educationSchool2 select{
+        width: calc(100% - 1px)
+      }
+      .skill input,.achivement input,.project textarea,.profile textarea,.strengths textarea{
+         width: calc(75% - 10px)
+      }
+      .skill button,.achivement button,.project button,.profile button,.strengths button{
+         width: calc(26% - 20px)
+      }
+
+      
+      .btn {
+          background-color: #2c3e50;
+          height: 33px;
+      }
+
